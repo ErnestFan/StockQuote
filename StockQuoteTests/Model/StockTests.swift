@@ -22,6 +22,7 @@ class StockTests: XCTestCase {
     }
     
     func testStockAttributes() {
+        // Test Stock model with normal attributes
         let attributes: [String: Any] = [
             "01. symbol": "MSFT",
             "02. open": "146.7400",
@@ -47,6 +48,23 @@ class StockTests: XCTestCase {
         XCTAssertEqual(stock.previousClose, 147.0700)
         XCTAssertEqual(stock.change, -0.3800)
         XCTAssertEqual(stock.changePercentage, -0.2584)
+    }
+    
+    func testStockEmptyAttributes() {
+        // Test Stock model with empty attributes
+        let attributes : [String: Any] = [:]
+        let stock = Stock(attributes: attributes)
+        
+        XCTAssertEqual(stock.symbol, "")
+        XCTAssertEqual(stock.open, 0.0)
+        XCTAssertEqual(stock.high, 0.0)
+        XCTAssertEqual(stock.low, 0.0)
+        XCTAssertEqual(stock.price, 0.0)
+        XCTAssertEqual(stock.volume, 0)
+        XCTAssertEqual(stock.latestTradingDate, "")
+        XCTAssertEqual(stock.previousClose, 0.0)
+        XCTAssertEqual(stock.change, 0.0)
+        XCTAssertEqual(stock.changePercentage, 0.0)
     }
 
 //    func testExample() {

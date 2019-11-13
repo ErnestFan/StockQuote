@@ -21,15 +21,19 @@ class Stock {
     let changePercentage: Double!
     
     init(attributes: [String: Any]) {
-        self.symbol = ""
-        self.open = 0.0
-        self.high = 0.0
-        self.low = 0.0
-        self.price = 0.0
-        self.volume = 0
-        self.latestTradingDate = ""
-        self.previousClose = 0.0
-        self.change = 0.0
-        self.changePercentage = 0.0
+        self.symbol = attributes["01. symbol"] as? String ?? ""
+        self.open = Double(attributes["02. open"] as? String ?? "") ?? 0.0
+        self.high = Double(attributes["03. high"] as? String ?? "") ?? 0.0
+        self.low = Double(attributes["04. low"] as? String ?? "") ?? 0.0
+        self.price = Double(attributes["05. price"] as? String ?? "") ?? 0.0
+        self.volume = Int(attributes["06. volume"] as? String ?? "") ?? 0
+        self.latestTradingDate = attributes["07. latest trading day"] as? String ?? ""
+        self.previousClose = Double(attributes["08. previous close"] as? String ?? "") ?? 0.0
+        self.change = Double(attributes["09. change"] as? String ?? "") ?? 0.0
+        if let percentageString = attributes["10. change percent"] as? String {
+            self.changePercentage = Double(percentageString.dropLast())
+        } else {
+            self.changePercentage = 0
+        }
     }
 }
