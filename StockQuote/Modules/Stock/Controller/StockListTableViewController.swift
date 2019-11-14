@@ -44,6 +44,21 @@ class StockListTableViewController: UITableViewController {
     
     // MARK: - Network Request
     
+    func requestStockDetail(with symbol: String, for indexPath: IndexPath) {
+        StockAPIService.instance.getStockDetail(for: symbol) { (data) in
+            if let attributes = data {
+                self.stockDict[symbol] = Stock(symbol: symbol, attributes: attributes)
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            } else {
+                // Handle network error
+                print("Failed network request")
+            }
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -63,11 +78,11 @@ class StockListTableViewController: UITableViewController {
             cell.stockSymbol = symbol
             
             if let stock = stockDict[symbol] {
-                // Create StockViewModel with stock
-                // Assign StockViewModel to cell
+                // Create StockViewModel and to cell
+                cell.stockViewModel = StockViewModel(stock: stock)
             } else {
                 // Retrieve Stock from API
-                // Update cell
+                requestStockDetail(with: symbol, for: indexPath)
             }
         }
 

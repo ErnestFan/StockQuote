@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let stocks = ["MSFT", "GOOG", "AAPL", "NKE", "SBUX"]
+        let stocks = ["NVDA", "AMZN", "NFLX", "TSLA", "FB", "MSFT", "GOOG", "AAPL", "NKE", "SBUX"]
         let stockListVC = StockListTableViewController(stocks: stocks, style: .plain)
         
         // Override point for customization after application launch.

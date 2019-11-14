@@ -16,7 +16,7 @@ class StockViewModel {
     // Get price change for display usage
     func displayTextForPriceChange() -> String {
         if price == 0.0 || change == 0.0 {
-            return ""
+            return "-"
         }
         
         let prefix = change > 0 ? "+" : "-"
@@ -26,7 +26,7 @@ class StockViewModel {
     // Get price for display usage
     func displayTextForPrice() -> String {
         if price == 0.0 {
-            return ""
+            return "-"
         }
         
         return String(format: "%.2f", price)

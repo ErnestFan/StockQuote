@@ -20,6 +20,7 @@ class StockListTableViewCell: UITableViewCell {
                 symbolLabel.text = stock.symbol
                 priceLabel.text = stock.displayTextForPrice()
                 priceChangeLabel.text = stock.displayTextForPriceChange()
+                self.layoutIfNeeded()
             }
         }
     }
@@ -62,33 +63,33 @@ class StockListTableViewCell: UITableViewCell {
         stackView.distribution = .fillProportionally
         
         addSubview(stackView)
-        stackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 5, left: 10, bottom: 0, right: 10), size: .init(width: 0, height: 40))
+        stackView.anchor(top: safeAreaLayoutGuide.topAnchor, leading: safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 5, left: 10, bottom: 0, right: 10), size: .init(width: 0, height: 40))
         
         addSubview(priceChangeLabel)
         priceChangeLabel.anchor(top: stackView.bottomAnchor, leading: nil, bottom: nil, trailing: stackView.trailingAnchor, size: .init(width: 0, height: 40))
         
         addSubview(dividerView)
-        dividerView.anchor(top: priceChangeLabel.bottomAnchor, leading: stackView.leadingAnchor, bottom: bottomAnchor, trailing: stackView.trailingAnchor, size: .init(width: 0, height: 1))
+        dividerView.anchor(top: priceChangeLabel.bottomAnchor, leading: stackView.leadingAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, trailing: stackView.trailingAnchor, size: .init(width: 0, height: 1))
     }
     
     // MARK: - UI Properties
     
     let symbolLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "HelveticaNeue-Medium", size: 20)
+        label.font = UIFont(name: "HelveticaNeue-Medium", size: 30)
         return label
     }()
     
     let priceLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "HelveticaNeue-Light", size: 20)
+        label.font = UIFont(name: "HelveticaNeue-Light", size: 30)
         label.textAlignment = .right
         return label
     }()
     
     let priceChangeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "HelveticaNeue-Light", size: 16)
+        label.font = UIFont(name: "HelveticaNeue-Light", size: 24)
         label.textAlignment = .center
         return label
     }()

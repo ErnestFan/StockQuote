@@ -73,7 +73,7 @@ class StockViewModelTests: XCTestCase {
         let stock = Stock(symbol: symbol, attributes: [:])
         let emptyStockViewModel = StockViewModel(stock: stock)
         
-        XCTAssertEqual(emptyStockViewModel.displayTextForPrice(), "")
-        XCTAssertEqual(emptyStockViewModel.displayTextForPriceChange(), "")
+        XCTAssertEqual(emptyStockViewModel.displayTextForPrice(), "-")
+        XCTAssertEqual(emptyStockViewModel.displayTextForPriceChange(), "-")
     }
 }
