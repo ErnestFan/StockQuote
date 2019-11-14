@@ -20,8 +20,8 @@ class Stock {
     let change: Double!
     let changePercentage: Double!
     
-    init(attributes: [String: Any]) {
-        self.symbol = attributes["01. symbol"] as? String ?? ""
+    init(symbol: String, attributes: [String: Any]) {
+        self.symbol = symbol
         self.open = Double(attributes["02. open"] as? String ?? "") ?? 0.0
         self.high = Double(attributes["03. high"] as? String ?? "") ?? 0.0
         self.low = Double(attributes["04. low"] as? String ?? "") ?? 0.0

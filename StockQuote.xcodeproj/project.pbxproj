@@ -18,6 +18,7 @@
 		17A089B4237C8F8F00D3D549 /* StockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A089B3237C8F8F00D3D549 /* StockTests.swift */; };
 		17A089B8237C8FC700D3D549 /* StockViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A089B7237C8FC700D3D549 /* StockViewModelTests.swift */; };
 		17A089BA237C8FDE00D3D549 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A089B9237C8FDE00D3D549 /* Stock.swift */; };
+		17A089BC237D3E7800D3D549 /* StockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A089BB237D3E7800D3D549 /* StockViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		17A089B3237C8F8F00D3D549 /* StockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTests.swift; sourceTree = "<group>"; };
 		17A089B7237C8FC700D3D549 /* StockViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewModelTests.swift; sourceTree = "<group>"; };
 		17A089B9237C8FDE00D3D549 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		17A089BB237D3E7800D3D549 /* StockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 		17A089B2237C8D7500D3D549 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				17A089BB237D3E7800D3D549 /* StockViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17A08981237C887A00D3D549 /* ViewController.swift in Sources */,
+				17A089BC237D3E7800D3D549 /* StockViewModel.swift in Sources */,
 				17A0897D237C887A00D3D549 /* AppDelegate.swift in Sources */,
 				17A089BA237C8FDE00D3D549 /* Stock.swift in Sources */,
 				17A0897F237C887A00D3D549 /* SceneDelegate.swift in Sources */,

@@ -23,6 +23,7 @@ class StockTests: XCTestCase {
     
     func testStockAttributes() {
         // Test Stock model with normal attributes
+        let symbol = "MSFT"
         let attributes: [String: Any] = [
             "01. symbol": "MSFT",
             "02. open": "146.7400",
@@ -35,10 +36,10 @@ class StockTests: XCTestCase {
             "09. change": "-0.3800",
             "10. change percent": "-0.2584%"
         ]
+    
+        let stock = Stock(symbol: symbol, attributes: attributes)
         
-        let stock = Stock(attributes: attributes)
-        
-        XCTAssertEqual(stock.symbol, "MSFT")
+        XCTAssertEqual(stock.symbol, symbol)
         XCTAssertEqual(stock.open, 146.7400)
         XCTAssertEqual(stock.high, 147.4625)
         XCTAssertEqual(stock.low, 146.2800)
@@ -51,11 +52,13 @@ class StockTests: XCTestCase {
     }
     
     func testStockEmptyAttributes() {
-        // Test Stock model with empty attributes
+        // Test Stock model with empty attributes (eg. request returns nothing)
+        let symbol = "MSFT"
         let attributes : [String: Any] = [:]
-        let stock = Stock(attributes: attributes)
         
-        XCTAssertEqual(stock.symbol, "")
+        let stock = Stock(symbol: symbol, attributes: attributes)
+        
+        XCTAssertEqual(stock.symbol, symbol)
         XCTAssertEqual(stock.open, 0.0)
         XCTAssertEqual(stock.high, 0.0)
         XCTAssertEqual(stock.low, 0.0)
@@ -66,17 +69,4 @@ class StockTests: XCTestCase {
         XCTAssertEqual(stock.change, 0.0)
         XCTAssertEqual(stock.changePercentage, 0.0)
     }
-
-//    func testExample() {
-//        // This is an example of a functional test case.
-//        // Use XCTAssert and related functions to verify your tests produce the correct results.
-//    }
-//
-//    func testPerformanceExample() {
-//        // This is an example of a performance test case.
-//        self.measure {
-//            // Put the code you want to measure the time of here.
-//        }
-//    }
-
 }
