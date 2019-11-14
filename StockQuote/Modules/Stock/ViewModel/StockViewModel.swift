@@ -14,16 +14,25 @@ class StockViewModel {
     let change: Double!
     
     func displayTextForChange() -> String {
-        return "-"
+        if price == 0.0 || change == 0.0 {
+            return ""
+        }
+        
+        let prefix = change > 0 ? "+" : "-"
+        return prefix + String(format: "%.2f", abs(change))
     }
     
     func displayTextForPrice() -> String {
-        return ""
+        if price == 0.0 {
+            return ""
+        }
+        
+        return String(format: "%.2f", price)
     }
     
     init(stock: Stock) {
-        self.symbol = ""
-        self.price = 0.0
-        self.change = 0.0
+        self.symbol = stock.symbol
+        self.price = stock.price
+        self.change = stock.change
     }
 }
