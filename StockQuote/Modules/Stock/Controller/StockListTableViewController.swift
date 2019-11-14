@@ -14,11 +14,16 @@ class StockListTableViewController: UITableViewController {
     
     var stockDict = [String : Stock]()
     
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(StockListTableViewCell.self, forCellReuseIdentifier: StockListTableViewCell.cellReuseIdentifier)
+        self.title = "Stock Quote"
+        setupTableView()
     }
+    
+    // MARK: - Init
     
     init(stocks:[String], style: UITableView.Style) {
         self.stockSymbolArray = stocks
@@ -27,6 +32,14 @@ class StockListTableViewController: UITableViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Setup
+    
+    private func setupTableView() {
+        tableView.register(StockListTableViewCell.self, forCellReuseIdentifier: StockListTableViewCell.cellReuseIdentifier)
+        
+        tableView.separatorStyle = .none
     }
     
     // MARK: - Network Request
@@ -46,6 +59,8 @@ class StockListTableViewController: UITableViewController {
         
         if let cell = cell as? StockListTableViewCell {
             let symbol = stockSymbolArray[indexPath.row]
+            
+            cell.stockSymbol = symbol
             
             if let stock = stockDict[symbol] {
                 // Create StockViewModel with stock

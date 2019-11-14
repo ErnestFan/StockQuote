@@ -10,6 +10,8 @@ import UIKit
 
 class StockListTableViewCell: UITableViewCell {
 
+    // MARK: - Properties
+    
     static let cellReuseIdentifier = "StockListTableViewCell"
     
     var stockViewModel: StockViewModel? {
@@ -20,6 +22,26 @@ class StockListTableViewCell: UITableViewCell {
                 priceChangeLabel.text = stock.displayTextForPriceChange()
             }
         }
+    }
+    
+    var stockSymbol : String? {
+        didSet {
+            if let symbol = stockSymbol {
+                symbolLabel.text = symbol
+            }
+        }
+    }
+    
+    // MARK: - Init
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func awakeFromNib() {
@@ -40,10 +62,13 @@ class StockListTableViewCell: UITableViewCell {
         stackView.distribution = .fillProportionally
         
         addSubview(stackView)
-        stackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 10), size: .init(width: 0, height: 40))
+        stackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 5, left: 10, bottom: 0, right: 10), size: .init(width: 0, height: 40))
         
         addSubview(priceChangeLabel)
-        priceChangeLabel.anchor(top: stackView.bottomAnchor, leading: nil, bottom: bottomAnchor, trailing: stackView.trailingAnchor, size: .init(width: 0, height: 40))
+        priceChangeLabel.anchor(top: stackView.bottomAnchor, leading: nil, bottom: nil, trailing: stackView.trailingAnchor, size: .init(width: 0, height: 40))
+        
+        addSubview(dividerView)
+        dividerView.anchor(top: priceChangeLabel.bottomAnchor, leading: stackView.leadingAnchor, bottom: bottomAnchor, trailing: stackView.trailingAnchor, size: .init(width: 0, height: 1))
     }
     
     // MARK: - UI Properties
@@ -66,5 +91,11 @@ class StockListTableViewCell: UITableViewCell {
         label.font = UIFont(name: "HelveticaNeue-Light", size: 16)
         label.textAlignment = .center
         return label
+    }()
+    
+    let dividerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+        return view
     }()
 }
