@@ -21,7 +21,10 @@ class Stock {
     let changePercentage: Double!
     
     init(symbol: String, attributes: [String: Any]) {
+        // Symbol needed no matter data exist or not
         self.symbol = symbol
+        
+        // Extract value from JSON data
         self.open = Double(attributes["02. open"] as? String ?? "") ?? 0.0
         self.high = Double(attributes["03. high"] as? String ?? "") ?? 0.0
         self.low = Double(attributes["04. low"] as? String ?? "") ?? 0.0
@@ -30,7 +33,9 @@ class Stock {
         self.latestTradingDate = attributes["07. latest trading day"] as? String ?? ""
         self.previousClose = Double(attributes["08. previous close"] as? String ?? "") ?? 0.0
         self.change = Double(attributes["09. change"] as? String ?? "") ?? 0.0
+        
         if let percentageString = attributes["10. change percent"] as? String {
+            // Remove "%" sign from string, convert to double
             self.changePercentage = Double(percentageString.dropLast())
         } else {
             self.changePercentage = 0

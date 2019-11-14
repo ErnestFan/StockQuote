@@ -16,7 +16,7 @@ class StockViewModelTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
         symbol = "MSFT"
         
         attributes = [
@@ -35,7 +35,7 @@ class StockViewModelTests: XCTestCase {
 
     override func tearDown() {
         super.tearDown()
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        
         symbol = nil
         attributes = nil
     }
@@ -55,7 +55,7 @@ class StockViewModelTests: XCTestCase {
         let stockViewModel = StockViewModel(stock: stock)
         
         XCTAssertEqual(stockViewModel.displayTextForPrice(), "146.73")
-        XCTAssertEqual(stockViewModel.displayTextForChange(), "-0.38")
+        XCTAssertEqual(stockViewModel.displayTextForPriceChange(), "-0.38")
     }
     
     func testStockViewModelDisplayInfoWithPositivePriceChange() {
@@ -65,7 +65,7 @@ class StockViewModelTests: XCTestCase {
         let stockViewModel = StockViewModel(stock: stock)
         
         XCTAssertEqual(stockViewModel.displayTextForPrice(), "146.73")
-        XCTAssertEqual(stockViewModel.displayTextForChange(), "+0.38")
+        XCTAssertEqual(stockViewModel.displayTextForPriceChange(), "+0.38")
     }
     
     func testStockViewModelDisplayInfoWithEmptyStock() {
@@ -74,6 +74,6 @@ class StockViewModelTests: XCTestCase {
         let emptyStockViewModel = StockViewModel(stock: stock)
         
         XCTAssertEqual(emptyStockViewModel.displayTextForPrice(), "")
-        XCTAssertEqual(emptyStockViewModel.displayTextForChange(), "")
+        XCTAssertEqual(emptyStockViewModel.displayTextForPriceChange(), "")
     }
 }
