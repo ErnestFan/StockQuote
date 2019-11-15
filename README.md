@@ -14,3 +14,39 @@ Requirements:
 
 5) Use any network library to retrieve data in JSON format
 
+
+Third-Party Libraries/Frameworks/Services:
+
+Alamofire - retrieve data from API endpoint
+
+SwiftyJSON - decode JSON data
+
+Alpha Vantage - API Service Provider (eg. https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=demo)
+
+
+*Important Note: 
+
+Alpha Vantage API service allows only 5 API requests per minute.
+
+A timer is implemented in order to resume failed network requests once the time limit is reached.*
+
+
+Main Components:
+
+Stock
+  - Model to store stock quote data received from API service
+
+StockViewModel
+  - View Model for stock list display usage
+
+StockListTableViewController
+  - Primary ViewController to display stock info and current trading price
+  - Request stock quote from API service
+  - Notify user on network request status
+  - Store and handle pending network request
+  
+StockDetailViewController
+  - ViewController to display stock details with given Stock data
+  
+StockAPIService
+  - Singleton to make network request and response with decoded data
