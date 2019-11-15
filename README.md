@@ -2,7 +2,7 @@
 
 An universal iOS application that retrieve real-time details about a random set of stocks.
 
-Requirements:
+### Requirements:
 
 1) Test Driven Development - Unit Testing & UI Testing
 
@@ -15,8 +15,10 @@ Requirements:
 5) Use any network library to retrieve data in JSON format
 
 
-Third-Party Libraries/Frameworks/Services:
 
+
+### Third-Party Libraries/Frameworks/Services:
+------
 Alamofire - retrieve data from API endpoint
 
 SwiftyJSON - decode JSON data
@@ -24,15 +26,19 @@ SwiftyJSON - decode JSON data
 Alpha Vantage - API Service Provider (eg. https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=demo)
 
 
-*Important Note: 
 
+
+### Important Note
+-----
 Alpha Vantage API service allows only 5 API requests per minute.
 
-A timer is implemented in order to resume failed network requests once the time limit is reached.*
+A timer is implemented in order to resume failed network requests once the time limit is reached.
 
 
-Main Components:
 
+
+### Main Components
+-----
 Stock
   - Model to store stock quote data received from API service
 
