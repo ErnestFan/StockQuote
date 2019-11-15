@@ -10,15 +10,22 @@ target 'StockQuote' do
   # Pods for StockQuote
   pod "Alamofire"
   pod "SwiftyJSON"
+  pod 'Swifter'
 
-  target 'StockQuoteTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+end
 
-  target 'StockQuoteUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+target 'StockQuoteTests' do
+  inherit! :search_paths
+  # Pods for testing
+  pod "Alamofire"
+  pod "SwiftyJSON"
+  pod 'Swifter'
+end
 
+target 'StockQuoteUITests' do
+  inherit! :search_paths
+  # Pods for testing
+  pod "Alamofire"
+  pod "SwiftyJSON"
+  pod 'Swifter'
 end

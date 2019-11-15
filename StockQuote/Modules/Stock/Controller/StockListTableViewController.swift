@@ -65,6 +65,10 @@ class StockListTableViewController: UITableViewController {
     // MARK: - Alert
     
     func presentNetworkRequestError() {
+        if self.presentingViewController != nil {
+            return
+        }
+        
         let title = "Unable to retrieve data"
         let message = "Such error can occur due to your network connection or the limitation of 5 stock quotes per minute from our data provider. Please try again later."
         

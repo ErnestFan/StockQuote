@@ -1,4 +1,4 @@
-framework module Pods_StockQuoteTests {
+module Pods_StockQuoteTests {
   umbrella header "Pods-StockQuoteTests-umbrella.h"
 
   export *

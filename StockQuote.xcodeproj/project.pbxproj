@@ -11,12 +11,12 @@
 		1776DFB6237EDE82003171B1 /* StockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1776DFB5237EDE82003171B1 /* StockDetailViewController.swift */; };
 		1776DFB8237EEC5F003171B1 /* StockDetailPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1776DFB7237EEC5F003171B1 /* StockDetailPriceView.swift */; };
 		1776DFBA237EF5BB003171B1 /* StockDetailPairedLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1776DFB9237EF5BB003171B1 /* StockDetailPairedLabelView.swift */; };
+		1776DFBC237F12E9003171B1 /* DynamicStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1776DFBB237F12E9003171B1 /* DynamicStubs.swift */; };
 		17A0897D237C887A00D3D549 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A0897C237C887A00D3D549 /* AppDelegate.swift */; };
 		17A0897F237C887A00D3D549 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A0897E237C887A00D3D549 /* SceneDelegate.swift */; };
 		17A08981237C887A00D3D549 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A08980237C887A00D3D549 /* ViewController.swift */; };
 		17A08986237C887B00D3D549 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17A08985237C887B00D3D549 /* Assets.xcassets */; };
 		17A08989237C887B00D3D549 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17A08987237C887B00D3D549 /* LaunchScreen.storyboard */; };
-		17A08994237C887C00D3D549 /* StockQuoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A08993237C887C00D3D549 /* StockQuoteTests.swift */; };
 		17A0899F237C887C00D3D549 /* StockQuoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A0899E237C887C00D3D549 /* StockQuoteUITests.swift */; };
 		17A089B4237C8F8F00D3D549 /* StockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A089B3237C8F8F00D3D549 /* StockTests.swift */; };
 		17A089B8237C8FC700D3D549 /* StockViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A089B7237C8FC700D3D549 /* StockViewModelTests.swift */; };
@@ -28,9 +28,9 @@
 		17A089C8237D751800D3D549 /* StockListTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A089C7237D751800D3D549 /* StockListTableViewCellTests.swift */; };
 		17A089CC237D7D0300D3D549 /* UIViewAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A089CB237D7D0300D3D549 /* UIViewAnchor.swift */; };
 		17A089CF237D7D9800D3D549 /* UIViewAnchorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A089CE237D7D9800D3D549 /* UIViewAnchorTests.swift */; };
-		21A96AE44D7DB6C7667B5397 /* Pods_StockQuoteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF59D56BAB54DAEFD522579E /* Pods_StockQuoteUITests.framework */; };
 		98295DC5FD9C95DD5B690709 /* Pods_StockQuote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A507BE1B94D854788B3732 /* Pods_StockQuote.framework */; };
-		D5C9BCEDE79D1BC51E560904 /* Pods_StockQuoteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01BFF8BF76A4FFAD1BDD5442 /* Pods_StockQuoteTests.framework */; };
+		9EFB6925383838A859557B7E /* libPods-StockQuoteUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF581B7E799B7B7C78B7639E /* libPods-StockQuoteUITests.a */; };
+		CB4B8CAA73393CCD9FD149BF /* libPods-StockQuoteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5F4356377B93131ED03507 /* libPods-StockQuoteTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,11 +51,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01BFF8BF76A4FFAD1BDD5442 /* Pods_StockQuoteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockQuoteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1776DFB3237DD26B003171B1 /* StockAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAPIService.swift; sourceTree = "<group>"; };
 		1776DFB5237EDE82003171B1 /* StockDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailViewController.swift; sourceTree = "<group>"; };
 		1776DFB7237EEC5F003171B1 /* StockDetailPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailPriceView.swift; sourceTree = "<group>"; };
 		1776DFB9237EF5BB003171B1 /* StockDetailPairedLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailPairedLabelView.swift; sourceTree = "<group>"; };
+		1776DFBB237F12E9003171B1 /* DynamicStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicStubs.swift; sourceTree = "<group>"; };
 		17A08979237C887A00D3D549 /* StockQuote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockQuote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17A0897C237C887A00D3D549 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17A0897E237C887A00D3D549 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,7 +64,6 @@
 		17A08988237C887B00D3D549 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17A0898A237C887B00D3D549 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17A0898F237C887C00D3D549 /* StockQuoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockQuoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		17A08993237C887C00D3D549 /* StockQuoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockQuoteTests.swift; sourceTree = "<group>"; };
 		17A08995237C887C00D3D549 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17A0899A237C887C00D3D549 /* StockQuoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockQuoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17A0899E237C887C00D3D549 /* StockQuoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockQuoteUITests.swift; sourceTree = "<group>"; };
@@ -84,9 +83,10 @@
 		60A507BE1B94D854788B3732 /* Pods_StockQuote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockQuote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71283AB6DAAE9D543AD529FA /* Pods-StockQuote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockQuote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StockQuote/Pods-StockQuote.debug.xcconfig"; sourceTree = "<group>"; };
 		8FE75AF64C15455187E7653E /* Pods-StockQuoteUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockQuoteUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StockQuoteUITests/Pods-StockQuoteUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CA5F4356377B93131ED03507 /* libPods-StockQuoteTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StockQuoteTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D80AC6A053D3E372AD481FE8 /* Pods-StockQuoteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockQuoteTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StockQuoteTests/Pods-StockQuoteTests.release.xcconfig"; sourceTree = "<group>"; };
-		DF59D56BAB54DAEFD522579E /* Pods_StockQuoteUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockQuoteUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F703B2EE5B297925F72DEE1F /* Pods-StockQuote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockQuote.release.xcconfig"; path = "Pods/Target Support Files/Pods-StockQuote/Pods-StockQuote.release.xcconfig"; sourceTree = "<group>"; };
+		FF581B7E799B7B7C78B7639E /* libPods-StockQuoteUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StockQuoteUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5C9BCEDE79D1BC51E560904 /* Pods_StockQuoteTests.framework in Frameworks */,
+				CB4B8CAA73393CCD9FD149BF /* libPods-StockQuoteTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,7 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21A96AE44D7DB6C7667B5397 /* Pods_StockQuoteUITests.framework in Frameworks */,
+				9EFB6925383838A859557B7E /* libPods-StockQuoteUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,8 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				60A507BE1B94D854788B3732 /* Pods_StockQuote.framework */,
-				01BFF8BF76A4FFAD1BDD5442 /* Pods_StockQuoteTests.framework */,
-				DF59D56BAB54DAEFD522579E /* Pods_StockQuoteUITests.framework */,
+				CA5F4356377B93131ED03507 /* libPods-StockQuoteTests.a */,
+				FF581B7E799B7B7C78B7639E /* libPods-StockQuoteUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -194,7 +194,6 @@
 				17A089BF237D60FF00D3D549 /* Controller */,
 				17A089B5237C8FA000D3D549 /* Model */,
 				17A089B6237C8FA800D3D549 /* ViewModel */,
-				17A08993237C887C00D3D549 /* StockQuoteTests.swift */,
 				17A08995237C887C00D3D549 /* Info.plist */,
 			);
 			path = StockQuoteTests;
@@ -205,6 +204,7 @@
 			children = (
 				17A0899E237C887C00D3D549 /* StockQuoteUITests.swift */,
 				17A089A0237C887C00D3D549 /* Info.plist */,
+				1776DFBB237F12E9003171B1 /* DynamicStubs.swift */,
 			);
 			path = StockQuoteUITests;
 			sourceTree = "<group>";
@@ -474,12 +474,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-StockQuote/Pods-StockQuote-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire-framework/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Swifter-framework/Swifter.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-framework/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swifter.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,7 +556,6 @@
 				17A089C8237D751800D3D549 /* StockListTableViewCellTests.swift in Sources */,
 				17A089CF237D7D9800D3D549 /* UIViewAnchorTests.swift in Sources */,
 				17A089B8237C8FC700D3D549 /* StockViewModelTests.swift in Sources */,
-				17A08994237C887C00D3D549 /* StockQuoteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +564,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17A0899F237C887C00D3D549 /* StockQuoteUITests.swift in Sources */,
+				1776DFBC237F12E9003171B1 /* DynamicStubs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
