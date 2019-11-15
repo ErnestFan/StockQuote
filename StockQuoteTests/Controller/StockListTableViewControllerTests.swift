@@ -28,7 +28,7 @@ class StockListTableViewControllerTests: XCTestCase {
         sut = nil
     }
     
-    // MARK: Table View
+    // MARK: - Table View
     
     func testControllerHasTableView() {
         sut.loadViewIfNeeded()
@@ -48,5 +48,39 @@ class StockListTableViewControllerTests: XCTestCase {
         let cell = sut.tableView.dequeueReusableCell(withIdentifier: StockListTableViewCell.cellReuseIdentifier)
         
         XCTAssertNotNil(cell, "StockListController's tableview should be able to dequeue a reusable cell")
+    }
+    
+    // MARK: - Pending Network Request
+    
+    func testPendingNetworkRequest() {
+        XCTAssertEqual(sut.pendingNetworkRequest.count, 0)
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        
+        sut.addPendingNetworkRequest(with: indexPath, and: "")
+        XCTAssertEqual(sut.pendingNetworkRequest.count, 1)
+        
+        sut.addPendingNetworkRequest(with: indexPath, and: "")
+        XCTAssertEqual(sut.pendingNetworkRequest.count, 1, "Same request being added again should not change the count")
+        
+        sut.removePendingNetworkRequest(for: indexPath)
+        XCTAssertEqual(sut.pendingNetworkRequest.count, 0)
+    }
+    
+    // MARK: - Timer
+    
+    func testNetworkRequestTimer() {
+        XCTAssertNil(sut.networkRequestTimer, "Timer should be nil")
+        
+        sut.enableNetworkRequestTimer()
+        XCTAssertNotNil(sut.networkRequestTimer, "Timer should exist after adding pending request")
+        if let timer = sut.networkRequestTimer {
+            XCTAssertTrue(timer.isValid, "Timer should be valid")
+        }
+        
+        sut.disableNetworkRequestTimer()
+        if let timer = sut.networkRequestTimer {
+            XCTAssertFalse(timer.isValid, "Timer should be invalid")
+        }
     }
 }

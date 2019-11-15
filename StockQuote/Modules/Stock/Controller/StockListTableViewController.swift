@@ -12,7 +12,10 @@ class StockListTableViewController: UITableViewController {
 
     let stockSymbolArray : [String]!
     
-    var stockDict = [String : Stock]()
+    var stockDetailDict = [String : Stock]()
+    var pendingNetworkRequest = [IndexPath : String]()
+    
+    var networkRequestTimer : Timer?
     
     // MARK: - Life Cycle
     
@@ -47,14 +50,57 @@ class StockListTableViewController: UITableViewController {
     func requestStockDetail(with symbol: String, for indexPath: IndexPath) {
         StockAPIService.instance.getStockDetail(for: symbol) { (data) in
             if let attributes = data {
-                self.stockDict[symbol] = Stock(symbol: symbol, attributes: attributes)
+                self.stockDetailDict[symbol] = Stock(symbol: symbol, attributes: attributes)
+                self.removePendingNetworkRequest(for: indexPath)
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadRows(at: [indexPath], with: .automatic)
                 }
             } else {
-                // Handle network error
-                print("Failed network request")
+                // If network request failed, add to pending
+                self.addPendingNetworkRequest(with: indexPath, and: symbol)
+            }
+        }
+    }
+    
+    func addPendingNetworkRequest(with indexPath: IndexPath, and symbol: String) {
+        if !pendingNetworkRequest.keys.contains(indexPath) {
+            pendingNetworkRequest[indexPath] = symbol
+            enableNetworkRequestTimer()
+        }
+    }
+    
+    func removePendingNetworkRequest(for indexPath: IndexPath) {
+        pendingNetworkRequest.removeValue(forKey: indexPath)
+        if pendingNetworkRequest.count <= 0 {
+            disableNetworkRequestTimer()
+        }
+    }
+    
+    // MARK: - Network Request Retry Timer
+    
+    func enableNetworkRequestTimer() {
+        // If timer already exists and valid, return
+        if let timer = networkRequestTimer, timer.isValid {
+            return
+        }
+        
+        networkRequestTimer = Timer.scheduledTimer(timeInterval: 90.0, target: self, selector: #selector(resumePendingRequest), userInfo: nil, repeats: true)
+    }
+    
+    func disableNetworkRequestTimer() {
+        networkRequestTimer?.invalidate()
+    }
+    
+    @objc func resumePendingRequest() {
+        var count = 0
+        for key in pendingNetworkRequest.keys.sorted() {
+            if let symbol = pendingNetworkRequest[key] {
+                requestStockDetail(with: symbol, for: key)
+                count += 1
+            }
+            if count >= 5 {
+                break
             }
         }
     }
@@ -73,12 +119,12 @@ class StockListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: StockListTableViewCell.cellReuseIdentifier, for: indexPath)
         
         if let cell = cell as? StockListTableViewCell {
+            // Configure cell
             let symbol = stockSymbolArray[indexPath.row]
-            
             cell.stockSymbol = symbol
             
-            if let stock = stockDict[symbol] {
-                // Create StockViewModel and to cell
+            if let stock = stockDetailDict[symbol] {
+                // Create StockViewModel and add to cell
                 cell.stockViewModel = StockViewModel(stock: stock)
             } else {
                 // Retrieve Stock from API

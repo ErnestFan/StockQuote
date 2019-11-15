@@ -29,6 +29,8 @@ class StockListTableViewCell: UITableViewCell {
         didSet {
             if let symbol = stockSymbol {
                 symbolLabel.text = symbol
+                priceLabel.text = ""
+                priceChangeLabel.text = ""
             }
         }
     }
