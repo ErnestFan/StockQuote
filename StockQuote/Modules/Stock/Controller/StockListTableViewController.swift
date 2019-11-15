@@ -66,7 +66,7 @@ class StockListTableViewController: UITableViewController {
     
     func presentNetworkRequestError() {
         let title = "Unable to retrieve data"
-        let message = "Such error can occur due to your network connection or the limitation of 5 stock quotes per minute on our server. Please try again later."
+        let message = "Such error can occur due to your network connection or the limitation of 5 stock quotes per minute from our data provider. Please try again later."
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Got it", style: .cancel, handler: nil))
@@ -139,7 +139,7 @@ class StockListTableViewController: UITableViewController {
             return
         }
         
-        networkRequestTimer = Timer.scheduledTimer(timeInterval: 90.0, target: self, selector: #selector(resumePendingRequest), userInfo: nil, repeats: true)
+        networkRequestTimer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(resumePendingRequest), userInfo: nil, repeats: true)
     }
     
     func disableNetworkRequestTimer() {
