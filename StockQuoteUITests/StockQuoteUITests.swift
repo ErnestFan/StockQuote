@@ -27,7 +27,7 @@ class StockQuoteUITests: XCTestCase {
         dynamicStubs.tearDown()
     }
     
-    func testUpdateTableViewCellAfterNetworkRequest() {
+    func stubNetworkRequest() {
         let jsonDict = ["Global Quote": [
             "01. symbol": "NVDA",
             "02. open": "146.7400",
@@ -46,6 +46,10 @@ class StockQuoteUITests: XCTestCase {
         } else {
             assertionFailure()
         }
+    }
+    
+    func testUpdateTableViewCellAfterNetworkRequest() {
+        stubNetworkRequest()
         
         let app = XCUIApplication()
         app.launchArguments += ["TESTING"]
@@ -54,7 +58,7 @@ class StockQuoteUITests: XCTestCase {
         let tableViewCell = app.tables.staticTexts["NVDA"]
         XCTAssertTrue(tableViewCell.exists, "Cell should exist")
         
-        // Make sure stubs data succeed
+        // Make sure table view cell is updated
         let priceLabel = app.tables.staticTexts["99.99"]
         let exists = NSPredicate(format: "exists == 1")
 
@@ -63,24 +67,7 @@ class StockQuoteUITests: XCTestCase {
     }
 
     func testPresentAndDismissStockDetail() {
-        let jsonDict = ["Global Quote": [
-            "01. symbol": "NVDA",
-            "02. open": "146.7400",
-            "03. high": "147.4625",
-            "04. low": "146.2800",
-            "05. price": "99.9900",
-            "06. volume": "8991011",
-            "07. latest trading day": "2019-11-13",
-            "08. previous close": "147.0700",
-            "09. change": "-0.3800",
-            "10. change percent": "-0.2584%"
-        ]]
-        
-        if let jsonData = try? JSONSerialization.data(withJSONObject: jsonDict, options: [.prettyPrinted]) {
-            dynamicStubs.stubRequest(path: "/NVDA", jsonData: jsonData)
-        } else {
-            assertionFailure()
-        }
+        stubNetworkRequest()
         
         let app = XCUIApplication()
         app.launchArguments += ["TESTING"]
@@ -90,7 +77,7 @@ class StockQuoteUITests: XCTestCase {
         let tableViewCell = app.tables.staticTexts["NVDA"]
         tableViewCell.tap()
         let openLabel = app.staticTexts["Open"]
-        XCTAssertTrue(openLabel.exists, "Open label should exist and visible")
+        XCTAssertTrue(openLabel.exists, "Open label should exist")
         
         // Navigate back to stock list
         app.navigationBars["NVDA"].buttons["Stock Quote"].tap()
@@ -112,7 +99,7 @@ class StockQuoteUITests: XCTestCase {
         
         // Dismiss alert
         alertButton.tap()
-        XCTAssertFalse(alertButton.exists, "Alert should exist")
+        XCTAssertFalse(alertButton.exists, "Alert should not exist")
         
     }
 
