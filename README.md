@@ -37,6 +37,12 @@ Alpha Vantage API service allows only 5 API requests per minute.
 
 A timer is implemented in order to resume failed network requests once the time limit is reached.
 
+Tapping on a stock with no data will immediately request the data
+
+If success, the stock detail will be present
+
+or else, an error alert will pop up
+
 
 
 ------
