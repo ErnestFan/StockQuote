@@ -20,6 +20,25 @@ class Stock {
     let change: Double!
     let changePercentage: Double!
     
+    // Get price change for display usage
+    func displayTextForPriceChange() -> String {
+        if price == 0.0 || change == 0.0 {
+            return "-"
+        }
+        
+        let prefix = change > 0 ? "+" : "-"
+        return prefix + String(format: "%.2f", abs(change))
+    }
+    
+    // Get price for display usage
+    func displayTextForPrice() -> String {
+        if price == 0.0 {
+            return "-"
+        }
+        
+        return String(format: "%.2f", price)
+    }
+    
     init(symbol: String, attributes: [String: Any]) {
         // Symbol needed no matter data exist or not
         self.symbol = symbol

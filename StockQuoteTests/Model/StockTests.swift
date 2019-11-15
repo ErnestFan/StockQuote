@@ -11,18 +11,16 @@ import XCTest
 
 class StockTests: XCTestCase {
 
+    var symbol : String!
+    
+    var attributes : [String: Any]!
+    
+    var stock : Stock!
+    
     override func setUp() {
         super.setUp()
-    }
-
-    override func tearDown() {
-        super.tearDown()
-    }
-    
-    func testStockAttributes() {
-        // Test Stock model with normal attributes
-        let symbol = "MSFT"
-        let attributes: [String: Any] = [
+        symbol = "MSFT"
+        attributes = [
             "01. symbol": "MSFT",
             "02. open": "146.7400",
             "03. high": "147.4625",
@@ -34,8 +32,19 @@ class StockTests: XCTestCase {
             "09. change": "-0.3800",
             "10. change percent": "-0.2584%"
         ]
+        
+        stock = Stock(symbol: symbol, attributes: attributes)
+    }
+
+    override func tearDown() {
+        super.tearDown()
+        symbol = nil
+        attributes = nil
+        stock = nil
+    }
     
-        let stock = Stock(symbol: symbol, attributes: attributes)
+    func testStockAttributes() {
+        // Test Stock model with normal attributes
         
         XCTAssertEqual(stock.symbol, symbol)
         XCTAssertEqual(stock.open, 146.7400)
@@ -51,10 +60,8 @@ class StockTests: XCTestCase {
     
     func testStockEmptyAttributes() {
         // Test Stock model with empty attributes (eg. request returns nothing)
-        let symbol = "MSFT"
-        let attributes : [String: Any] = [:]
-        
-        let stock = Stock(symbol: symbol, attributes: attributes)
+        attributes = [:]
+        stock = Stock(symbol: symbol, attributes: attributes)
         
         XCTAssertEqual(stock.symbol, symbol)
         XCTAssertEqual(stock.open, 0.0)
@@ -66,5 +73,21 @@ class StockTests: XCTestCase {
         XCTAssertEqual(stock.previousClose, 0.0)
         XCTAssertEqual(stock.change, 0.0)
         XCTAssertEqual(stock.changePercentage, 0.0)
+    }
+    
+    func testStockDisplayInfoWithNegativePriceChange() {
+        // Normal Stock, negative price change
+        
+        XCTAssertEqual(stock.displayTextForPrice(), "146.73")
+        XCTAssertEqual(stock.displayTextForPriceChange(), "-0.38")
+    }
+    
+    func testStockDisplayInfoWithPositivePriceChange() {
+        // Normal Stock, positive price change
+        attributes["09. change"] = "+0.3800"
+        stock = Stock(symbol: symbol, attributes: attributes)
+        
+        XCTAssertEqual(stock.displayTextForPrice(), "146.73")
+        XCTAssertEqual(stock.displayTextForPriceChange(), "+0.38")
     }
 }

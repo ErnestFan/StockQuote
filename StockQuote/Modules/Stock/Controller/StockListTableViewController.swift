@@ -10,12 +10,15 @@ import UIKit
 
 class StockListTableViewController: UITableViewController {
 
+    // Stock Info
     let stockSymbolArray : [String]!
-    
     var stockDetailDict = [String : Stock]()
-    var pendingNetworkRequest = [IndexPath : String]()
     
+    // Networking
+    var pendingNetworkRequest = [IndexPath : String]()
     var networkRequestTimer : Timer?
+    var activityIndicator = UIActivityIndicatorView(style: .medium)
+    var onGoingNetworkRequestCount = 0
     
     // MARK: - Life Cycle
     
@@ -24,6 +27,7 @@ class StockListTableViewController: UITableViewController {
         
         self.title = "Stock Quote"
         setupTableView()
+        setupActivityIndicator()
     }
     
     // MARK: - Init
@@ -41,24 +45,74 @@ class StockListTableViewController: UITableViewController {
     
     private func setupTableView() {
         tableView.register(StockListTableViewCell.self, forCellReuseIdentifier: StockListTableViewCell.cellReuseIdentifier)
-        
         tableView.separatorStyle = .none
+    }
+    
+    private func setupActivityIndicator() {
+        let barButtonItem = UIBarButtonItem(customView: activityIndicator)
+        self.navigationItem.rightBarButtonItem = barButtonItem
+    }
+    
+    // MARK: - Stock Detail
+    
+    func presentStockDetail(with stock: Stock) {
+        let stockDetailVC = StockDetailViewController(with: stock)
+        if let nc = self.navigationController {
+            nc.pushViewController(stockDetailVC, animated: true)
+        }
+    }
+    
+    // MARK: - Alert
+    
+    func presentNetworkRequestError() {
+        let title = "Unable to retrieve data"
+        let message = "Such error can occur due to your network connection or the limitation of 5 stock quotes per minute on our server. Please try again later."
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Got it", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    // MARK: - Activity Indicator
+    
+    func enableActivityIndicator() {
+        activityIndicator.startAnimating()
+    }
+    
+    func disableActivityIndicator() {
+        if onGoingNetworkRequestCount <= 0 {
+            activityIndicator.stopAnimating()
+        }
     }
     
     // MARK: - Network Request
     
-    func requestStockDetail(with symbol: String, for indexPath: IndexPath) {
+    func requestStockDetail(with symbol: String, for indexPath: IndexPath, reaction requiresReaction: Bool = false) {
+        onGoingNetworkRequestCount += 1
+        enableActivityIndicator()
+        
         StockAPIService.instance.getStockDetail(for: symbol) { (data) in
+            self.onGoingNetworkRequestCount -= 1
+            self.disableActivityIndicator()
+            
             if let attributes = data {
-                self.stockDetailDict[symbol] = Stock(symbol: symbol, attributes: attributes)
+                let stock = Stock(symbol: symbol, attributes: attributes)
+                self.stockDetailDict[symbol] = stock
                 self.removePendingNetworkRequest(for: indexPath)
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                    
+                    if requiresReaction {
+                        self.presentStockDetail(with: stock)
+                    }
                 }
             } else {
-                // If network request failed, add to pending
                 self.addPendingNetworkRequest(with: indexPath, and: symbol)
+                
+                if requiresReaction {
+                    self.presentNetworkRequestError()
+                }
             }
         }
     }
@@ -80,7 +134,7 @@ class StockListTableViewController: UITableViewController {
     // MARK: - Network Request Retry Timer
     
     func enableNetworkRequestTimer() {
-        // If timer already exists and valid, return
+        // If timer already exists and valid, do nothing
         if let timer = networkRequestTimer, timer.isValid {
             return
         }
@@ -93,10 +147,12 @@ class StockListTableViewController: UITableViewController {
     }
     
     @objc func resumePendingRequest() {
+        // Fire up to 5 network requests
         var count = 0
-        for key in pendingNetworkRequest.keys.sorted() {
-            if let symbol = pendingNetworkRequest[key] {
-                requestStockDetail(with: symbol, for: key)
+        
+        for indexPath in pendingNetworkRequest.keys.sorted() {
+            if let symbol = pendingNetworkRequest[indexPath] {
+                requestStockDetail(with: symbol, for: indexPath)
                 count += 1
             }
             if count >= 5 {
@@ -105,7 +161,7 @@ class StockListTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - Table view data source
+    // MARK: - Tableview data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -119,19 +175,31 @@ class StockListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: StockListTableViewCell.cellReuseIdentifier, for: indexPath)
         
         if let cell = cell as? StockListTableViewCell {
-            // Configure cell
             let symbol = stockSymbolArray[indexPath.row]
-            cell.stockSymbol = symbol
             
             if let stock = stockDetailDict[symbol] {
-                // Create StockViewModel and add to cell
                 cell.stockViewModel = StockViewModel(stock: stock)
             } else {
-                // Retrieve Stock from API
+                // Configure cell with basic info
+                cell.stockSymbol = symbol
                 requestStockDetail(with: symbol, for: indexPath)
             }
         }
 
         return cell
+    }
+    
+    // MARK: - Tableview delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        
+        let symbol = stockSymbolArray[indexPath.row]
+        
+        if let stock = stockDetailDict[symbol] {
+            presentStockDetail(with: stock)
+        } else {
+            requestStockDetail(with: symbol, for: indexPath, reaction: true)
+        }
     }
 }
