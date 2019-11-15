@@ -24,6 +24,9 @@ Alamofire
 
 SwiftyJSON
   - decode JSON data
+  
+Swifter
+  - stubs network request for UI Testing
 
 Alpha Vantage
   - API Service Provider (eg. https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=demo)
@@ -37,11 +40,11 @@ Alpha Vantage API service allows only 5 API requests per minute.
 
 A timer is implemented in order to resume failed network requests once the time limit is reached.
 
-Tapping on a stock with no data will immediately request the data
+Tap on a stock(tableview cell) with no data will immediately request the data.
 
-If success, the stock detail will be present
+If success, the stock detail will be present.
 
-or else, an error alert will pop up
+Or else, an error alert will pop up.
 
 
 
