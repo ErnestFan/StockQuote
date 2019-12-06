@@ -19,9 +19,7 @@
 		17A08989237C887B00D3D549 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17A08987237C887B00D3D549 /* LaunchScreen.storyboard */; };
 		17A0899F237C887C00D3D549 /* StockQuoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A0899E237C887C00D3D549 /* StockQuoteUITests.swift */; };
 		17A089B4237C8F8F00D3D549 /* StockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A089B3237C8F8F00D3D549 /* StockTests.swift */; };
-		17A089B8237C8FC700D3D549 /* StockViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A089B7237C8FC700D3D549 /* StockViewModelTests.swift */; };
 		17A089BA237C8FDE00D3D549 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A089B9237C8FDE00D3D549 /* Stock.swift */; };
-		17A089BC237D3E7800D3D549 /* StockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A089BB237D3E7800D3D549 /* StockViewModel.swift */; };
 		17A089BE237D60DA00D3D549 /* StockListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A089BD237D60DA00D3D549 /* StockListTableViewController.swift */; };
 		17A089C3237D613F00D3D549 /* StockListTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A089C2237D613F00D3D549 /* StockListTableViewControllerTests.swift */; };
 		17A089C5237D6C2700D3D549 /* StockListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A089C4237D6C2700D3D549 /* StockListTableViewCell.swift */; };
@@ -69,9 +67,7 @@
 		17A0899E237C887C00D3D549 /* StockQuoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockQuoteUITests.swift; sourceTree = "<group>"; };
 		17A089A0237C887C00D3D549 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17A089B3237C8F8F00D3D549 /* StockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTests.swift; sourceTree = "<group>"; };
-		17A089B7237C8FC700D3D549 /* StockViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewModelTests.swift; sourceTree = "<group>"; };
 		17A089B9237C8FDE00D3D549 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
-		17A089BB237D3E7800D3D549 /* StockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewModel.swift; sourceTree = "<group>"; };
 		17A089BD237D60DA00D3D549 /* StockListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListTableViewController.swift; sourceTree = "<group>"; };
 		17A089C2237D613F00D3D549 /* StockListTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListTableViewControllerTests.swift; sourceTree = "<group>"; };
 		17A089C4237D6C2700D3D549 /* StockListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListTableViewCell.swift; sourceTree = "<group>"; };
@@ -193,7 +189,6 @@
 				17A089C6237D74FE00D3D549 /* View */,
 				17A089BF237D60FF00D3D549 /* Controller */,
 				17A089B5237C8FA000D3D549 /* Model */,
-				17A089B6237C8FA800D3D549 /* ViewModel */,
 				17A08995237C887C00D3D549 /* Info.plist */,
 			);
 			path = StockQuoteTests;
@@ -220,7 +215,6 @@
 		17A089AD237C8D3E00D3D549 /* Stock */ = {
 			isa = PBXGroup;
 			children = (
-				17A089B2237C8D7500D3D549 /* ViewModel */,
 				17A089B1237C8D6300D3D549 /* View */,
 				17A089B0237C8D5D00D3D549 /* Model */,
 				17A089AE237C8D5100D3D549 /* Controller */,
@@ -255,28 +249,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		17A089B2237C8D7500D3D549 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				17A089BB237D3E7800D3D549 /* StockViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		17A089B5237C8FA000D3D549 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				17A089B3237C8F8F00D3D549 /* StockTests.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		17A089B6237C8FA800D3D549 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				17A089B7237C8FC700D3D549 /* StockViewModelTests.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		17A089BF237D60FF00D3D549 /* Controller */ = {
@@ -536,7 +514,6 @@
 				17A089C5237D6C2700D3D549 /* StockListTableViewCell.swift in Sources */,
 				17A089CC237D7D0300D3D549 /* UIViewAnchor.swift in Sources */,
 				17A08981237C887A00D3D549 /* ViewController.swift in Sources */,
-				17A089BC237D3E7800D3D549 /* StockViewModel.swift in Sources */,
 				17A0897D237C887A00D3D549 /* AppDelegate.swift in Sources */,
 				17A089BA237C8FDE00D3D549 /* Stock.swift in Sources */,
 				17A089BE237D60DA00D3D549 /* StockListTableViewController.swift in Sources */,
@@ -555,7 +532,6 @@
 				17A089B4237C8F8F00D3D549 /* StockTests.swift in Sources */,
 				17A089C8237D751800D3D549 /* StockListTableViewCellTests.swift in Sources */,
 				17A089CF237D7D9800D3D549 /* UIViewAnchorTests.swift in Sources */,
-				17A089B8237C8FC700D3D549 /* StockViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

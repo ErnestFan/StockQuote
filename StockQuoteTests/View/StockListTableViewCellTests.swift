@@ -12,7 +12,7 @@ import XCTest
 class StockListTableViewCellTests: XCTestCase {
 
     var sut: StockListTableViewCell!
-    var stockViewModel: StockViewModel!
+    var stock: Stock!
     
     override func setUp() {
         super.setUp()
@@ -34,9 +34,7 @@ class StockListTableViewCellTests: XCTestCase {
             "10. change percent": "-0.2584%"
         ]
         
-        let stock = Stock(symbol: symbol, attributes: attributes)
-        
-        stockViewModel = StockViewModel(stock: stock)
+        stock = Stock(symbol: symbol, attributes: attributes)
     }
 
     override func tearDown() {
@@ -45,11 +43,11 @@ class StockListTableViewCellTests: XCTestCase {
         sut = nil
     }
     
-    func testStockViewModelDidSet() {
-        sut.stockViewModel = stockViewModel
+    func testStockDidSet() {
+        sut.stock = stock
         
-        XCTAssertEqual(sut.symbolLabel.text, stockViewModel.symbol)
-        XCTAssertEqual(sut.priceLabel.text, stockViewModel.displayTextForPrice())
-        XCTAssertEqual(sut.priceChangeLabel.text, stockViewModel.displayTextForPriceChange())
+        XCTAssertEqual(sut.symbolLabel.text, stock.symbol)
+        XCTAssertEqual(sut.priceLabel.text, stock.displayTextForPrice())
+        XCTAssertEqual(sut.priceChangeLabel.text, stock.displayTextForPriceChange())
     }
 }

@@ -14,9 +14,9 @@ class StockListTableViewCell: UITableViewCell {
     
     static let cellReuseIdentifier = "StockListTableViewCell"
     
-    var stockViewModel: StockViewModel? {
+    var stock: Stock? {
         didSet {
-            if let stock = stockViewModel {
+            if let stock = stock {
                 symbolLabel.text = stock.symbol
                 priceLabel.text = stock.displayTextForPrice()
                 priceChangeLabel.text = stock.displayTextForPriceChange()

@@ -73,6 +73,9 @@ class StockTests: XCTestCase {
         XCTAssertEqual(stock.previousClose, 0.0)
         XCTAssertEqual(stock.change, 0.0)
         XCTAssertEqual(stock.changePercentage, 0.0)
+        
+        XCTAssertEqual(stock.displayTextForPrice(), "-")
+        XCTAssertEqual(stock.displayTextForPriceChange(), "-")
     }
     
     func testStockDisplayInfoWithNegativePriceChange() {

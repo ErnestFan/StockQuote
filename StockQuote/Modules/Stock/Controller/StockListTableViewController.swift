@@ -91,6 +91,10 @@ class StockListTableViewController: UITableViewController {
     
     // MARK: - Network Request
     
+    // Keep track of number of requests fired, stop animation when all request finished
+    // If user tap on a cell, request data immediately with reaction
+    // Else, request on scroll or resume pending requests based on timer
+    
     func requestStockDetail(with symbol: String, for indexPath: IndexPath, reaction requiresReaction: Bool = false) {
         onGoingNetworkRequestCount += 1
         enableActivityIndicator()
@@ -100,6 +104,7 @@ class StockListTableViewController: UITableViewController {
             self.disableActivityIndicator()
             
             if let attributes = data {
+                // If received data, extract data from JSON
                 let stock = Stock(symbol: symbol, attributes: attributes)
                 self.stockDetailDict[symbol] = stock
                 self.removePendingNetworkRequest(for: indexPath)
@@ -112,6 +117,7 @@ class StockListTableViewController: UITableViewController {
                     }
                 }
             } else {
+                // If failed, add request to pending
                 self.addPendingNetworkRequest(with: indexPath, and: symbol)
                 
                 if requiresReaction {
@@ -182,7 +188,7 @@ class StockListTableViewController: UITableViewController {
             let symbol = stockSymbolArray[indexPath.row]
             
             if let stock = stockDetailDict[symbol] {
-                cell.stockViewModel = StockViewModel(stock: stock)
+                cell.stock = stock
             } else {
                 // Configure cell with basic info
                 cell.stockSymbol = symbol
